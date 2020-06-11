@@ -1,15 +1,40 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {BrowserRouter,Switch,Route} from 'react-router-dom'
 import {Provider} from 'react-redux'
 import store from './../store/index'
 import Interceptor from './../utils/interceptor'
-import {BrowserRouter,Switch,Route} from 'react-router-dom'
+import jwtDecode from 'jwt-decode'
+import Landing from './Landing'
+import Login from './Login'
+import Register from './Register'
+import Header from './UI/Header'
+import Films from './Films'
+import SingleFilm from './SingleFilm'
+import CreateFilm from './CreateFilm'
 
-function App() {
-    return (
-        <div className="container">
+class App extends Component {
 
-        <BrowserRouter>
+ 
+    componentDidMount(){
+      const token = localStorage.getItem('auth_token')
+      if(token){
+          let decode = jwtDecode(token)
+         
+          setAuthToken(token)
+          store.dispatch({
+              type: Types.SET_USER,
+              payload: {
+                  user: decode
+              }
+          })
+      }
+    
+    }
+    
+      render () {
+        return (
+          <BrowserRouter>
             <div >
              <Header/>
             <Switch>
@@ -23,13 +48,8 @@ function App() {
             </Switch>
             </div>
           </BrowserRouter>
-        </div>
-    );
-}
-
-export default App;
-
-
-
-
-ReactDOM.render(<Provider store ={store}><App /></Provider>, document.getElementById('app'))
+        )
+      }
+    }
+    
+    ReactDOM.render(<Provider store ={store}><App /></Provider>, document.getElementById('app'))
