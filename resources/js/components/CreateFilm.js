@@ -17,7 +17,7 @@ function CreateFilm() {
     const [name,setName] = useState('')
     const [description,setDescription] = useState('')
     const [price,setPrice] = useState(0.0)
-    const [genre,setGenre] = useState('')
+    const [genre,setGenre] = useState('Action')
     const [ticket,setTicket] = useState(0)
     const [release,setRelease] = useState('Release')
     const [imageObject,setImageObject] = useState(null)
@@ -101,7 +101,12 @@ function CreateFilm() {
                 <div className="form-row">
                     <div className="form-group col-md-3">
                     <label >Genre</label>
-                    <input type="text" className="form-control" required placeholder="Genre" onChange={e=>setGenre(e.target.value)}/>
+                    <select className="form-control" onChange={e=>setGenre(e.target.value)}>
+                    <option value="Action">Action</option>
+                    <option value="Adventure">Adventure</option>
+                    <option value="Romantic">Romantic</option>
+                    <option value="Horror">Horror</option>
+                    </select>
                     </div>
                     <div className="form-group col-md-4">
                     <label >Country</label>

@@ -22,7 +22,7 @@ $factory->define(Comments::class, function (Faker $faker) {
 
    
 
-$comments = [ 'Nice film','Had a great time','Waste of my money','Deserves a 1/5 rating','Awesome!' ];
+$comments = [ 'Nice film','Had a great time','Waste of my money','Deserves a 1/5 rating','Awesome!','Garbage!' ];
 $randComment = array_rand($comments);
 $comment = $comments[$randComment];
 
