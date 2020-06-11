@@ -11,6 +11,7 @@ import Landing from './Landing'
 import Login from './Login'
 import Register from './Register'
 import Header from './Ui/Header'
+import Films from './Films'
 import setAuthToken from './../utils/setAuthToken'
 import * as Types from './../actions/types'
 import Interceptor from './../utils/interceptor'
@@ -46,7 +47,8 @@ class App extends Component {
               <Route exact  path ="/" component={Landing}/>
               <Route  path ="/login"  component={Login}/>
               <Route  path ="/register"  component={Register}/>
-                
+              <Route  exact  path ="/films" component={Films} />
+
     
             </Switch>
             </div>
