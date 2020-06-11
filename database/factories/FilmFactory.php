@@ -22,7 +22,7 @@ $factory->define(Films::class, function (Faker $faker) {
 
    
 
-$images = [ '1591728288.DontBreath.jpg','1591728324.Avengers.jpg','1591728729.FrightNight.jpg','1591777045.Spidermna.jpg' ];
+$images = [ 'DontBreath.jpg','Avengers.jpg','FrightNight.jpg','Spiderman.jpg','InsideOut.jpg' ];
 $randImage = array_rand($images);
 $image = $images[$randImage];
 
