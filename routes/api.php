@@ -21,3 +21,9 @@ Route::get('getUser','AuthController@getAuthenticatedUser');
 Route::get('logout','AuthController@logout');
 Route::get('guard','AuthController@guard');
 Route::get('/refreshToken','AuthController@refreshToken');
+
+
+//Films Controller
+Route::get('films','FilmController@index');
+Route::post('films','FilmController@create');
+Route::get('films/{id}','FilmController@getSingleFilm');
