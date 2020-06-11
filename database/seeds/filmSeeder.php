@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Database\Seeder;
@@ -5,12 +6,16 @@ use Illuminate\Database\Seeder;
 class FilmSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Seed the application's database.
      *
      * @return void
      */
     public function run()
     {
-        factory(\App\Films::class, 6)->create();
+        factory(\App\User::class, 6)->create();
+        factory(\App\Films::class, 6)->create()->each(function ($film) {
+            $film->comments()->save(factory(App\Comments::class)->make());
+        });
+
     }
 }

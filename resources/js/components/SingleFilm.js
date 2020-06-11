@@ -24,10 +24,10 @@ function SingleFilm(props) {
         setSingleFilm(res.data.film)
         setComments(res.data.comments)
         setDate(dateFormat(res.data.film.release_date,"mmmm dS, yyyy"))
-
         setLoading(false)
     }
     useEffect(()=>{
+        console.log(props.match.params.name)
         setLoading(true)
        getSingleFilmData()
 
@@ -52,11 +52,12 @@ function SingleFilm(props) {
         )
     }
     
-    else{
+    else if(singleFilm){
 
     return (
         <div className="singleFilmPage text-center " style={{backgroundImage:"url(/images/"+singleFilm.photo+")",backgroundSize:'cover'}}>
             <div className="overlay"></div>
+            
             <div className="filmDetails">
                 <div>
                 <h1 className="title">{singleFilm.name}</h1>
@@ -115,7 +116,7 @@ function SingleFilm(props) {
 
 
             </div>
-     
+    
             <div className="reviews">
                 <h2>Reviews</h2>
 
@@ -148,6 +149,9 @@ function SingleFilm(props) {
             
         </div>
     )}
+    else{
+        <h1>Hello</h1>
+    }
 }
 
 export default SingleFilm
