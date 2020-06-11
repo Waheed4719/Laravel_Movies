@@ -2,16 +2,19 @@ import React,{useEffect,useState} from 'react'
 import Axios from 'axios'
 import {Link} from 'react-router-dom'
 import slugify from 'slugify'
+import { useSelector } from 'react-redux'
 import Pagination from './miniComponents/Pagination'
 import AllFilms from './AllFilms'
 import './../../sass/films.scss'
 import image from './../assets/coverImage.jpg'
+
 function Films() {
 
     const [films,setFilms] = useState([])
     const [loading, setLoading ] = useState(false)
     const [currentPage, setCurrentPage] = useState(1)
     const [filmsPerPage,setFilmsPerPage] = useState(6)
+    const auth = useSelector(state=>state.auth)
 
 
 
@@ -71,11 +74,13 @@ else{
             paginate={paginate}
              /> 
 
-            
-            <div className="btnDiv">
-            <Link className="createFilmBtn" to='/films/create'>Create Film</Link>
-
-            </div>
+            { auth.isAuthenticated && 
+               <div className="btnDiv">
+               <Link className="createFilmBtn" to='/films/create'>Create Film</Link>
+   
+               </div>
+            }
+         
         </div>
     )
 }
