@@ -27,3 +27,6 @@ Route::get('/refreshToken','AuthController@refreshToken');
 Route::get('films','FilmController@index');
 Route::post('films','FilmController@create');
 Route::get('films/{id}','FilmController@getSingleFilm');
+
+//Comments Controller
+Route::post('/films/comment', 'CommentController@postComment')->middleware("auth:user");
