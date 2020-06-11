@@ -1,17 +1,22 @@
-import React from 'react';
+import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter,Switch,Route} from 'react-router-dom'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fab} from '@fortawesome/free-brands-svg-icons'
+import { fas } from '@fortawesome/free-solid-svg-icons'
 import {Provider} from 'react-redux'
 import store from './../store/index'
-import Interceptor from './../utils/interceptor'
 import jwtDecode from 'jwt-decode'
 import Landing from './Landing'
 import Login from './Login'
 import Register from './Register'
-import Header from './UI/Header'
-import Films from './Films'
-import SingleFilm from './SingleFilm'
-import CreateFilm from './CreateFilm'
+import Header from './Ui/Header'
+import setAuthToken from './../utils/setAuthToken'
+import * as Types from './../actions/types'
+import Interceptor from './../utils/interceptor'
+
+library.add(fab, fas)
+
 
 class App extends Component {
 
@@ -41,9 +46,7 @@ class App extends Component {
               <Route exact  path ="/" component={Landing}/>
               <Route  path ="/login"  component={Login}/>
               <Route  path ="/register"  component={Register}/>
-              <Route  exact  path ="/films" component={Films} />
-              <Route  path ="/films/create" component={CreateFilm} />
-              <Route  path ="/films/:name" component={SingleFilm} />
+                
     
             </Switch>
             </div>
@@ -51,5 +54,8 @@ class App extends Component {
         )
       }
     }
-    
-    ReactDOM.render(<Provider store ={store}><App /></Provider>, document.getElementById('app'))
+export default App;
+
+if (document.getElementById('app')) {
+    ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('app'));
+}
