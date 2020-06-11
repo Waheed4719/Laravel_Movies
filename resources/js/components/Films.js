@@ -27,7 +27,7 @@ function Films() {
           
         }
         
-        // fetchData()
+        fetchData()
         
     },[])
 

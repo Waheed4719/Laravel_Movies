@@ -16,6 +16,7 @@ import CreateFilm from './CreateFilm'
 import setAuthToken from './../utils/setAuthToken'
 import * as Types from './../actions/types'
 import Interceptor from './../utils/interceptor'
+import SingleFilm from './SingleFilm';
 
 library.add(fab, fas)
 
@@ -50,6 +51,7 @@ class App extends Component {
               <Route  path ="/register"  component={Register}/>
               <Route  exact  path ="/films" component={Films} />
               <Route exact path="/films/create" component={CreateFilm} />
+              <Route path="/films/:name" component={SingleFilm} />
     
             </Switch>
             </div>
