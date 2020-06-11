@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import DatePicker from 'react-datepicker'
+import {Redirect} from 'react-router-dom'
 import { CountryDropdown } from 'react-country-region-selector';
 import { Rate, message } from 'antd';
 import Axios from 'axios';
@@ -7,9 +8,10 @@ import './../../sass/createFilm.scss'
 import dateFormat from 'dateformat'
 import image from './../assets/coverImage2.jpg'
 import placeholder from './../assets/placeholder.png'
+import { useSelector } from 'react-redux';
 
 function CreateFilm() {
-
+    const auth = useSelector(state=>state.auth)
     const [photo,setPhoto] = useState(null)
     const [release_date,setStartDate] = useState(new Date())
     const [country,setCountry] = useState('')
@@ -54,6 +56,11 @@ function CreateFilm() {
         setImageObject(URL.createObjectURL(e.target.files[0]))
         setPhoto(e.target.files[0])
     }
+
+
+    if(auth.isAuthenticate){
+
+    
 
     return (
         <div className="createFilm" style={{backgroundImage:"url("+image+")",backgroundSize:'cover'}}>
@@ -158,7 +165,10 @@ function CreateFilm() {
                
        
         </div>
-    )
+    )}
+    else{
+        return <Redirect to="/login" />
+    }
 }
 
 export default CreateFilm
