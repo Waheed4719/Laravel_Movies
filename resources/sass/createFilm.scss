@@ -1,0 +1,30 @@
+.createFilm {
+    padding-top: 85px;
+    padding-bottom: 40px;
+    position: relative;
+    p,label,h5,h1{
+        color: white;
+    }
+    h1{
+        position: relative;
+        margin-bottom: 30px;
+    }
+    .overlay{
+        position: fixed;
+        background-color: #000;
+        height: 100%;
+        width: 100%;
+        opacity: 80%;
+        top:0%;
+    }
+    img{
+        margin-bottom: 15px;
+    }
+    button{
+        position: relative;
+        z-index: 2;
+        margin-top: 20px;
+    }
+   
+
+}
